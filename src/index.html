@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LectureScribe</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">OpenAI Realtime transcription</p>
+          <h1>LectureScribe</h1>
+          <p class="subtitle">Capture a professor from your microphone or transcribe a lecture stream playing on your laptop.</p>
+        </div>
+        <div id="status" class="status">Idle</div>
+      </section>
+
+      <section class="panel controls">
+        <label>
+          Audio input
+          <select id="inputMode">
+            <option value="mic">Microphone</option>
+            <option value="system">System audio / lecture stream</option>
+          </select>
+        </label>
+        <label id="sourcePicker" class="hidden">
+          Screen or window to capture
+          <select id="systemSource"></select>
+        </label>
+        <label>
+          Latency / accuracy
+          <select id="delay">
+            <option value="minimal">Minimal</option>
+            <option value="low" selected>Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+            <option value="xhigh">Extra high</option>
+          </select>
+        </label>
+        <label>
+          Expected languages
+          <input id="languages" placeholder="en, es, fr" value="en" />
+        </label>
+        <label class="wide">
+          Lecture context
+          <textarea id="prompt" rows="3" placeholder="Example: University calculus lecture about limits, derivatives, and optimization."></textarea>
+        </label>
+        <label class="wide">
+          Key terms, one per line
+          <textarea id="keywords" rows="3" placeholder="Fourier transform&#10;Bayes theorem&#10;mitochondria"></textarea>
+        </label>
+        <div class="button-row wide">
+          <button id="startButton">Start transcription</button>
+          <button id="stopButton" class="secondary" disabled>Stop</button>
+          <button id="copyButton" class="secondary">Copy transcript</button>
+          <button id="downloadButton" class="secondary">Download .txt</button>
+        </div>
+      </section>
+
+      <section class="panel transcript-panel">
+        <div class="transcript-header">
+          <h2>Live transcript</h2>
+          <span id="timer">00:00</span>
+        </div>
+        <div id="transcript" class="transcript" aria-live="polite"></div>
+      </section>
+    </main>
+    <script src="./renderer.js"></script>
+  </body>
+</html>
