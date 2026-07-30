@@ -1,0 +1,16 @@
+{
+  "name": "lecture-scribe",
+  "version": "0.1.0",
+  "description": "Desktop lecture transcription app with microphone and system-audio capture using OpenAI Realtime transcription.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "check": "node --check src/main.js && node --check src/preload.js && node --check src/renderer.js"
+  },
+  "keywords": ["electron", "openai", "realtime", "transcription", "lecture"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^37.2.4"
+  }
+}
